@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('regions', function (Blueprint $table) {
+        Schema::create('cities', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 50);
-            $table->integer('county');
+            $table->string('name', 100);
+            $table->integer('region')->nullable()->default(null);
+            $table->integer('country')->nullable()->default(null);
             $table->dateTime('last_reviewed')->nullable()->default(null);
             $table->integer('data_source');
         });
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('regions');
+        Schema::dropIfExists('cities');
     }
 };
